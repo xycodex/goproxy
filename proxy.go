@@ -117,7 +117,7 @@ func (proxy *ProxyHttpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 		// Setting it now, might impose wrong value, contradicting the actual new
 		// body the user returned.
 		ctx.Logf("Copying response to client %v [%d]", resp.Status, resp.StatusCode)
-		resp.Header.Del("Content-Length")
+		//resp.Header.Del("Content-Length")
 		copyHeaders(w.Header(), resp.Header)
 		w.WriteHeader(resp.StatusCode)
 		nr, err := io.Copy(w, resp.Body)
